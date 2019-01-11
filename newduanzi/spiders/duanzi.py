@@ -18,7 +18,7 @@ class DuanziSpider(CrawlSpider):
             
             contents = earch.xpath('./p/text()').extract()
             content = contents[0]
-            if contents.length > 1:
+            if len(contents) > 1:
                 content = contents[1]
             print ('......................%s'%(content))
             
