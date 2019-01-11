@@ -9,13 +9,10 @@ class DuanziSpider(CrawlSpider):
     allowed_domains = ['www.360wa.com']
     start_urls = ['http://www.360wa.com/']
 
-    rules = (
-        Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
-    )
+    # rules = (
+    #     Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
+    # )
 
-    def parse_item(self, response):
-        i = {}
-        #i['domain_id'] = response.xpath('//input[@id="sid"]/@value').extract()
-        #i['name'] = response.xpath('//div[@id="name"]').extract()
-        #i['description'] = response.xpath('//div[@id="description"]').extract()
-        return i
+    def parse(self, response):
+        for earch in response.xpath("//div[@class='p1']/div[@class='p_left']/a"):
+            print ('......................%s'%(earch.xpath('./p/text()').extract()))
