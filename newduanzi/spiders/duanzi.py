@@ -16,9 +16,9 @@ class DuanziSpider(CrawlSpider):
     def parse(self, response):
         for earch in response.xpath("//div[@class='p1']/div[@class='p_left']/a"):
             
-            contents = earch.xpath('./p/text()').extract
+            contents = earch.xpath('./p/text()').extract()
             content = contents[0]
-            if content.length > 1:
+            if contents.length > 1:
                 content = contents[1]
             print ('......................%s'%(content))
             
