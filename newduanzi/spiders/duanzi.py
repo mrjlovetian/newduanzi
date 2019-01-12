@@ -6,21 +6,23 @@ from scrapy.spiders import CrawlSpider, Rule
 
 class DuanziSpider(CrawlSpider):
     name = 'duanzi'
-    allowed_domains = ['www.360wa.com']
-    start_urls = ['http://www.360wa.com/']
+    allowed_domains = ['www.juzimi.com']
+    start_urls = ['https://www.juzimi.com/tags/400766']
 
     # rules = (
     #     Rule(LinkExtractor(allow=r'Items/'), callback='parse_item', follow=True),
     # )
 
     def parse(self, response):
-        for earch in response.xpath("//div[@class='p1']/div[@class='p_left']/a"):
+        for earch in response.xpath("//div[@class='view-content']/div/div"):
             
-            contents = earch.xpath('./p/text()').extract()
-            content = contents[0]
-            if len(contents) > 1:
-                content = contents[1]
-            print ('......................%s'%(content))
+            content = earch.xpath("./div[@class='views-field-phpcode-1']/a/text()").extract()[0]
+            source = earch.xpath("./div[@class='xqjulistwafo']/a/text()").extract()[0]
+            like = earch.xpath("./div[@class='views-field-ops']/a/text()").extract()[0]
+            juji = earch.xpath("./div[@class='alllistaddtoalbum']/a/text()").extract()[0]
+            comment = earch.xpath("./div[@class='views-field-comment-count']/a/text()").extract()[0]
+            author = earch.xpath("./div[@class='views-field-name']/a/text()").extract()[0]
+            print ('......................%s, %s, %s, %s, %s, %s'%(content, source, like, juji, comment, author))
             
 
 
