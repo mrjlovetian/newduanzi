@@ -17,12 +17,12 @@ class DuanziSpider(CrawlSpider):
         for earch in response.xpath("//div[@class='view-content']/div/div"):
             
             content = earch.xpath("./div[@class='views-field-phpcode-1']/a/text()").extract()[0]
-            source = earch.xpath("./div[@class='xqjulistwafo']/a/text()").extract()[0]
+            # source = earch.xpath("./div[@class='xqjulistwafo']/a/text()").extract()[0]
             like = earch.xpath("./div[@class='views-field-ops']/a/text()").extract()[0]
             juji = earch.xpath("./div[@class='views-field-field-addtoalbum-value']/div/a/text()").extract()[0]
             comment = earch.xpath("./div[@class='views-field-comment-count']/a/text()").extract()[0]
             author = earch.xpath("./div[@class='views-field-name']/div/a/text()").extract()[0]
-            print ('......................%s, %s, %s, %s, %s, %s'%(content, source, like, juji, comment, author))
+            print ('......................%s, %s, %s, %s, %s'%(content, like, juji, comment, author))
             
 
 
