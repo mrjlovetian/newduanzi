@@ -21,7 +21,7 @@ class DuanziSpider(CrawlSpider):
             like = earch.xpath("./div[@class='views-field-ops']/a/text()").extract()[0]
             juji = earch.xpath("./div[@class='views-field-field-addtoalbum-value']/div/a/text()").extract()[0]
             comment = earch.xpath("./div[@class='views-field-comment-count']/a/text()").extract()[0]
-            author = earch.xpath("./div[@class='views-field-name']/a/text()").extract()[0]
+            author = earch.xpath("./div[@class='views-field-name']/div/a/text()").extract()[0]
             print ('......................%s, %s, %s, %s, %s, %s'%(content, source, like, juji, comment, author))
             
 
