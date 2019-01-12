@@ -16,18 +16,18 @@ class DuanziSpider(CrawlSpider):
     def parse(self, response):
         for earch in response.xpath("//div[@class='view-content']/div/div"):
             
-            content = earch.xpath("./div[@class='views-field-phpcode-1']/a/text()").extract()
-            content = len(content)>0?contents[0]:''
+            contents = earch.xpath("./div[@class='views-field-phpcode-1']/a/text()").extract()
+            content = '' if len(contents)>0 content = contents[0]
             sources = earch.xpath("./div[@class='xqjulistwafo']/a/text()").extract()
-            source = len(content)>0?sources[0]:''
+            source = '' if len(sources)>0 source = sources[0]
             likes = earch.xpath("./div[@class='views-field-ops']/a/text()").extract()
-            like = len(content)>0?likes[0]:''
+            like = '' if len(likes)>0 like = likes[0]
             jujis = earch.xpath("./div[@class='views-field-field-addtoalbum-value']/div/a/text()").extract()
-            juji = len(content)>0?jujis[0]:''
+            juji = '' if len(jujis)>0 juji = jujis[0]
             comments = earch.xpath("./div[@class='views-field-comment-count']/a/text()").extract()
-            comment = len(content)>0?comments[0]:''
+            comment = '' if len(comments)>0 comment = comments[0]
             authors = earch.xpath("./div[@class='views-field-name']/div/a/text()").extract()
-            author = len(content)>0?authors[0]:''
+            author = '' if len(authors)>0 author authors[0]
             print ('......................%s, %s, %s, %s, %s'%(content, like, juji, comment, author))
             
 
