@@ -17,7 +17,7 @@ class DuanziSpider(CrawlSpider):
         for earch in response.xpath("//div[@class='view-content']/div/div"):
             
             content = earch.xpath("./div[@class='views-field-phpcode-1']/a/text()").extract()
-            content = len(content)>0?content[0]:''
+            content = len(content)>0?contents[0]:''
             sources = earch.xpath("./div[@class='xqjulistwafo']/a/text()").extract()
             source = len(content)>0?sources[0]:''
             likes = earch.xpath("./div[@class='views-field-ops']/a/text()").extract()
